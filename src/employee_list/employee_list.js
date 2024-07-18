@@ -1,51 +1,55 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, CSSProperties } from "react";
 import ReactDOM from "react-dom";
 import "./employee_list.css";
 import Swal from "sweetalert2";
+import ClipLoader from "react-spinners/ClipLoader";
 import { getEmployeeData, deleteEmployee, search } from "../services/services";
 import EmployeeForm from "../employee_form/employee_form";
+
+const override: CSSProperties = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "black",
+};
 
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
+  const [totalPages, setTotalPages] = useState(0);
+  const [sortBy, setSortBy] = useState({ column: "", order: "asc" });
+  const [loading, setLoading] = useState(false);
 
-  const dummyData = [
-    {
-      row_Id: 0,
-      employeeCode: "00981232",
-      firstName: "Gaurav",
-      lastName: "Upreti",
-      countryId: 0,
-      stateId: 0,
-      cityId: 0,
-      emailAddress: "user@example.com",
-      mobileNumber: "9834983409",
-      panNumber: "DHGSJ56J",
-      passportNumber: "Z67545JK",
-      profileImage: "localhost/",
-      gender: 1,
-      isActive: true,
-      dateOfBirth: "2024-05-14T09:58:40.501Z",
-      dateOfJoinee: "2024-05-14T09:58:40.501Z",
-      createdDate: "2024-05-14T09:58:40.501Z",
-      updatedDate: "2024-05-14T09:58:40.501Z",
-      isDeleted: true,
-      deletedDate: "2024-05-14T09:58:40.501Z",
-    },
-  ];
-
-  // getting the employee data from the database
   useEffect(() => {
-    const fetchEmployee = async () => {
-      try {
-        // const data = await getEmployeeData();
-        setEmployees(dummyData);
-      } catch (error) {
-        console.error("Error fetching employee data:", error);
-      }
-    };
+    // getting the employee data from the database
     fetchEmployee();
-  }, []);
+  }, [currentPage, pageSize, sortBy]);
+
+  const fetchEmployee = async () => {
+    try {
+      setLoading(true);
+      const employees = await getEmployeeData(
+        currentPage,
+        pageSize,
+        sortBy.column,
+        sortBy.order
+      );
+      setTimeout(() => {
+        const startIndex = (currentPage - 1) * pageSize;
+        const endIndex = Math.min(startIndex + pageSize, employees.length);
+        const data = employees.slice(startIndex, endIndex);
+        setEmployees(data);
+        setTotalPages(Math.ceil(employees.length / pageSize));
+      }, 500);
+    } catch (error) {
+      console.error("Error fetching employee data:", error);
+    } finally {
+      setTimeout(() => {
+        setLoading(false);
+      }, 500);
+    }
+  };
 
   const handleDelete = async (employeeId) => {
     const result = await Swal.fire({
@@ -60,8 +64,9 @@ function EmployeeList() {
     if (result.isConfirmed) {
       try {
         await deleteEmployee(employeeId);
-        const updatedData = await getEmployeeData();
-        setEmployees(updatedData);
+        // const updatedData = await getEmployeeData();
+        // setEmployees(updatedData);
+        await fetchEmployee();
         Swal.fire("Deleted!", "Employee has been deleted.", "success");
       } catch (error) {
         console.error("Error deleting employee:", error);
@@ -79,14 +84,20 @@ function EmployeeList() {
   const handleUpdate = async (employee) => {
     const result = await Swal.fire({
       html: '<div id="employeeForm"></div>',
-      showCancelButton: true,
+      showCancelButton: false,
+      showConfirmButton: false,
+      customClass: {
+        container: "custom-swal-container",
+        popup: "custom-swal-popup",
+        content: "custom-swal-content",
+      },
       didOpen: () => {
         ReactDOM.render(
           <EmployeeForm employeeId={employee} />,
           document.getElementById("employeeForm")
         );
       },
-      preConfirm: async () => {},
+      // preConfirm: async () => { },
     });
   };
 
@@ -96,11 +107,13 @@ function EmployeeList() {
       const params = searchText;
       const data = await search(params);
       setEmployees(data);
-      Swal.fire({
-        icon: "success",
-        title: "Success",
-        text: "Data fetched successfully",
-      });
+      if (data && data.length == 0) {
+        Swal.fire({
+          icon: "info",
+          title: "info",
+          text: "No data found!",
+        });
+      }
     } catch (error) {
       console.error("Error searching data:", error);
       Swal.fire({
@@ -111,8 +124,72 @@ function EmployeeList() {
     }
   };
 
-  const handleInputChange = (event) => {
-    setSearchText(event.target.value);
+  const handleInputChange = async (event) => {
+    if (event.target.value === "") {
+      const updatedData = await getEmployeeData();
+      setSearchText("");
+      setEmployees(updatedData);
+    } else {
+      setSearchText(event.target.value);
+    }
+    if (event.target?.keyCode === 13) {
+      await handleSearch();
+    }
+  };
+
+  const handleSort = (columnName) => {
+    console.log(`sort by - ${columnName}`);
+    const newOrder =
+      sortBy.column === columnName && sortBy.order === "asc" ? "desc" : "asc";
+    setSortBy({ column: columnName, order: newOrder });
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  const renderPagination = () => {
+    const pages = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(
+        <li
+          key={i}
+          className={`page-item ${currentPage === i ? "active" : ""}`}
+        >
+          <a className="page-link" onClick={() => handlePageChange(i)}>
+            {i}
+          </a>
+        </li>
+      );
+    }
+    return (
+      <nav aria-label="Page navigation example">
+        <ul className="pagination justify-content-end">
+          <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+            <a
+              className="page-link"
+              onClick={() => handlePageChange(currentPage - 1)}
+              tabIndex="-1"
+            >
+              Previous
+            </a>
+          </li>
+          {pages}
+          <li
+            className={`page-item ${
+              currentPage === totalPages ? "disabled" : ""
+            }`}
+          >
+            <a
+              className="page-link"
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              Next
+            </a>
+          </li>
+        </ul>
+      </nav>
+    );
   };
 
   return (
@@ -150,54 +227,70 @@ function EmployeeList() {
         <table className="table table-hover table-striped-columns">
           <thead>
             <tr>
-              <th>Email</th>
-              <th>Country</th>
-              <th>State</th>
-              <th>City</th>
-              <th>PAN</th>
-              <th>Passport</th>
-              <th>Gender</th>
+              <th onClick={() => handleSort("emailAddress")}>Email</th>
+              <th onClick={() => handleSort("countryName")}>Country</th>
+              <th onClick={() => handleSort("stateName")}>State</th>
+              <th onClick={() => handleSort("cityName")}>City</th>
+              <th onClick={() => handleSort("panNumber")}>PAN</th>
+              <th onClick={() => handleSort("passportNumber")}>Passport</th>
+              <th onClick={() => handleSort("gender")}>Gender</th>
               <th>isActive</th>
               <th>Profile Image</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {employees.map((employee, index) => (
-              <tr key={index}>
-                <td>{employee.emailAddress}</td>
-                <td>{employee.countryName}</td>
-                <td>{employee.stateName}</td>
-                <td>{employee.cityName}</td>
-                <td>{employee.panNumber}</td>
-                <td>{employee.passportNumber}</td>
-                <td>{employee.gender === 1 ? "Male" : "Female"}</td>
-                <td>{employee.isActive ? "Active" : "Inactive"}</td>
-                <td className="profile-image-section">
-                  <img
-                    src={employee.profileImage}
-                    alt="Profile"
-                    className="profile-image"
+            {loading ? (
+              <tr>
+                <td colSpan="10" className="custom-loader">
+                  <ClipLoader
+                    color={"#00000"}
+                    loading={loading}
+                    cssOverride={override}
+                    size={150}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
                   />
                 </td>
-                <td>
-                  <button
-                    className="btn btn-info m-1"
-                    onClick={() => handleUpdate(employee.row_Id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn btn-danger m-1"
-                    onClick={() => handleDelete(employee.row_Id)}
-                  >
-                    Delete
-                  </button>
-                </td>
               </tr>
-            ))}
+            ) : (
+              employees.map((employee, index) => (
+                <tr key={index}>
+                  <td>{employee.emailAddress}</td>
+                  <td>{employee.countryName}</td>
+                  <td>{employee.stateName}</td>
+                  <td>{employee.cityName}</td>
+                  <td>{employee.panNumber}</td>
+                  <td>{employee.passportNumber}</td>
+                  <td>{employee.gender === 1 ? "Male" : "Female"}</td>
+                  <td>{employee.isActive ? "Active" : "Inactive"}</td>
+                  <td className="profile-image-section">
+                    <img
+                      src={employee.profileImage}
+                      alt="Profile"
+                      className="profile-image"
+                    />
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-info m-1"
+                      onClick={() => handleUpdate(employee.row_Id)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-danger m-1"
+                      onClick={() => handleDelete(employee.row_Id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
+        <div className="employee-list-pagination">{renderPagination()}</div>
       </div>
     </>
   );

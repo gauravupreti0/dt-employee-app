@@ -6,17 +6,6 @@ import EmployeeList from "./employee_list/employee_list";
 
 function App() {
   return (
-    // <div className="row justify-content-center custom-row">
-    //   <Header></Header>
-    //   <div className="col-6">
-    //     <EmployeeForm></EmployeeForm>
-    //   </div>
-    //   <div className="col-10">
-    //     <EmployeeList></EmployeeList>
-    //   </div>
-    // </div>
-
-
     <Router>
       <div className="row justify-content-center custom-row">
         <Header></Header>

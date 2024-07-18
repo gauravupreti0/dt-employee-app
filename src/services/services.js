@@ -62,7 +62,6 @@ export const getCities = async (stateId) => {
 export const addEmployee = async (data) => {
   try {
     const response = await axios.post(`${apiUrl}/Employee/SaveEmployee/`, data);
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;
@@ -94,10 +93,10 @@ export const search = async (params) => {
 };
 
 // update the employee data
-export const updateEmployee = async (employeeData) => {
+export const updateEmployeeData = async (employeeData) => {
   try {
     const response = await axios.put(
-      `${apiUrl}/Employee/UpdateEmployee`,
+      `${apiUrl}/Employee/UpdateEmployee/`,
       employeeData
     );
     return response.data;

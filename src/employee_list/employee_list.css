@@ -10,3 +10,25 @@
   border-radius: 0.25rem !important;
   margin-right: 3rem;
 }
+
+.custom-swal-container {
+  width: 100%;
+}
+
+.custom-swal-popup {
+  width: 100%;
+}
+
+.custom-swal-content {
+  width: 100%;
+}
+
+.employee-list-pagination {
+  .page-link {
+    color: black;
+  }
+}
+
+.custom-loader {
+  padding: 5rem;
+}
