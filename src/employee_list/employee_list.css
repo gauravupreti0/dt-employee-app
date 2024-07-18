@@ -1,0 +1,12 @@
+.profile-image-section {
+  text-align: center;
+
+  .profile-image {
+    max-height: 5rem;
+  }
+}
+
+.search-bar {
+  border-radius: 0.25rem !important;
+  margin-right: 3rem;
+}

@@ -1,0 +1,11 @@
+.capitalize-fields {
+  text-transform: uppercase;
+}
+
+.emp-form {
+  background-color: #fff;
+}
+
+.error-message {
+  color: red;
+}
