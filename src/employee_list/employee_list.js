@@ -20,11 +20,12 @@ function EmployeeList() {
   const [totalPages, setTotalPages] = useState(0);
   const [sortBy, setSortBy] = useState({ column: "", order: "asc" });
   const [loading, setLoading] = useState(false);
-  const [areaData, setAreaData] = useState([]);
+  const [areaData, setAreaData] = useState();
 
   useEffect(() => {
     // getting the employee data from the database
     fetchEmployee();
+    console.log(areaData);
   }, [currentPage, pageSize, sortBy]);
 
   const fetchEmployee = async () => {
@@ -36,7 +37,7 @@ function EmployeeList() {
         sortBy.column,
         sortBy.order
       );
-      setAreaData(JSON.parse(localStorage.getItem("area_data")));
+      if (!areaData) setAreaData(JSON.parse(localStorage.getItem("area_data")));
       setTimeout(() => {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = Math.min(startIndex + pageSize, employees.length);
@@ -109,7 +110,7 @@ function EmployeeList() {
       const params = searchText;
       const data = await search(params);
       setEmployees(data);
-      if (data && data.length == 0) {
+      if (data && data.length === 0) {
         Swal.fire({
           icon: "info",
           title: "info",
@@ -261,9 +262,9 @@ function EmployeeList() {
                   <td>{employee.emailAddress}</td>
                   {areaData
                     .filter((area) => area.id === parseInt(employee.countryId))
-                    .map((area, index) => (
+                    .map((area) => (
                       <>
-                        <td key={index}>{area.name}</td>
+                        <td key={area.id}>{area.name}</td>
                         {area.states
                           ?.filter(
                             (state) =>
