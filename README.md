@@ -28,4 +28,7 @@ The Employee Management System is a React-based web application designed to mana
 #### header and search-bar
 <img width="1512" alt="dt_emp_app_03" src="https://github.com/user-attachments/assets/62e2dcea-6ad4-4a8e-8d8d-e48c21639e6e">
 
+#### alert box
+<img width="1512" alt="dt_emp_app_04" src="https://github.com/user-attachments/assets/a97b47a4-da80-4f36-ba32-91b690a51bed">
+
 
