@@ -20,6 +20,7 @@ function EmployeeList() {
   const [totalPages, setTotalPages] = useState(0);
   const [sortBy, setSortBy] = useState({ column: "", order: "asc" });
   const [loading, setLoading] = useState(false);
+  const [areaData, setAreaData] = useState([]);
 
   useEffect(() => {
     // getting the employee data from the database
@@ -35,6 +36,7 @@ function EmployeeList() {
         sortBy.column,
         sortBy.order
       );
+      setAreaData(JSON.parse(localStorage.getItem("area_data")));
       setTimeout(() => {
         const startIndex = (currentPage - 1) * pageSize;
         const endIndex = Math.min(startIndex + pageSize, employees.length);
@@ -257,9 +259,31 @@ function EmployeeList() {
               employees.map((employee, index) => (
                 <tr key={index}>
                   <td>{employee.emailAddress}</td>
-                  <td>{employee.countryName}</td>
-                  <td>{employee.stateName}</td>
-                  <td>{employee.cityName}</td>
+                  {areaData
+                    .filter((area) => area.id === parseInt(employee.countryId))
+                    .map((area, index) => (
+                      <>
+                        <td key={index}>{area.name}</td>
+                        {area.states
+                          ?.filter(
+                            (state) =>
+                              state.stateId === parseInt(employee.stateId)
+                          )
+                          .map((state) => (
+                            <>
+                              <td>{state.name}</td>
+                              {state.cities
+                                ?.filter(
+                                  (city) =>
+                                    city.cityId === parseInt(employee.cityId)
+                                )
+                                .map((city) => (
+                                  <td key={city.cityId}>{city.name}</td>
+                                ))}
+                            </>
+                          ))}
+                      </>
+                    ))}
                   <td>{employee.panNumber}</td>
                   <td>{employee.passportNumber}</td>
                   <td>{employee.gender === 1 ? "Male" : "Female"}</td>

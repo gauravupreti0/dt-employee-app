@@ -1,0 +1,661 @@
+[
+  {
+    "id": 1,
+    "name": "India",
+    "states": [
+      {
+        "stateId": 101,
+        "name": "Andhra Pradesh",
+        "cities": [
+          { "cityId": 1011, "name": "Visakhapatnam" },
+          { "cityId": 1012, "name": "Vijayawada" },
+          { "cityId": 1013, "name": "Tirupati" },
+          { "cityId": 1014, "name": "Guntur" },
+          { "cityId": 1015, "name": "Nellore" }
+        ]
+      },
+      {
+        "stateId": 102,
+        "name": "Maharashtra",
+        "cities": [
+          { "cityId": 1021, "name": "Mumbai" },
+          { "cityId": 1022, "name": "Pune" },
+          { "cityId": 1023, "name": "Nagpur" },
+          { "cityId": 1024, "name": "Nashik" },
+          { "cityId": 1025, "name": "Aurangabad" }
+        ]
+      },
+      {
+        "stateId": 103,
+        "name": "Tamil Nadu",
+        "cities": [
+          { "cityId": 1031, "name": "Chennai" },
+          { "cityId": 1032, "name": "Coimbatore" },
+          { "cityId": 1033, "name": "Madurai" },
+          { "cityId": 1034, "name": "Salem" },
+          { "cityId": 1035, "name": "Tiruchirappalli" }
+        ]
+      },
+      {
+        "stateId": 104,
+        "name": "Delhi",
+        "cities": [
+          { "cityId": 1041, "name": "New Delhi" },
+          { "cityId": 1042, "name": "Dwarka" },
+          { "cityId": 1043, "name": "Rohini" },
+          { "cityId": 1044, "name": "Saket" },
+          { "cityId": 1045, "name": "Karol Bagh" }
+        ]
+      },
+      {
+        "stateId": 105,
+        "name": "Karnataka",
+        "cities": [
+          { "cityId": 1051, "name": "Bengaluru" },
+          { "cityId": 1052, "name": "Mysore" },
+          { "cityId": 1053, "name": "Hubli" },
+          { "cityId": 1054, "name": "Mangalore" },
+          { "cityId": 1055, "name": "Belgaum" }
+        ]
+      },
+      {
+        "stateId": 106,
+        "name": "Uttar Pradesh",
+        "cities": [
+          { "cityId": 1061, "name": "Lucknow" },
+          { "cityId": 1062, "name": "Kanpur" },
+          { "cityId": 1063, "name": "Varanasi" },
+          { "cityId": 1064, "name": "Agra" },
+          { "cityId": 1065, "name": "Allahabad" }
+        ]
+      },
+      {
+        "stateId": 107,
+        "name": "West Bengal",
+        "cities": [
+          { "cityId": 1071, "name": "Kolkata" },
+          { "cityId": 1072, "name": "Howrah" },
+          { "cityId": 1073, "name": "Durgapur" },
+          { "cityId": 1074, "name": "Siliguri" },
+          { "cityId": 1075, "name": "Asansol" }
+        ]
+      },
+      {
+        "stateId": 108,
+        "name": "Rajasthan",
+        "cities": [
+          { "cityId": 1081, "name": "Jaipur" },
+          { "cityId": 1082, "name": "Jodhpur" },
+          { "cityId": 1083, "name": "Udaipur" },
+          { "cityId": 1084, "name": "Ajmer" },
+          { "cityId": 1085, "name": "Kota" }
+        ]
+      },
+      {
+        "stateId": 109,
+        "name": "Punjab",
+        "cities": [
+          { "cityId": 1091, "name": "Amritsar" },
+          { "cityId": 1092, "name": "Ludhiana" },
+          { "cityId": 1093, "name": "Patiala" },
+          { "cityId": 1094, "name": "Jalandhar" },
+          { "cityId": 1095, "name": "Mohali" }
+        ]
+      },
+      {
+        "stateId": 110,
+        "name": "Gujarat",
+        "cities": [
+          { "cityId": 1101, "name": "Ahmedabad" },
+          { "cityId": 1102, "name": "Surat" },
+          { "cityId": 1103, "name": "Vadodara" },
+          { "cityId": 1104, "name": "Rajkot" },
+          { "cityId": 1105, "name": "Bhavnagar" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "United States",
+    "states": [
+      {
+        "stateId": 201,
+        "name": "California",
+        "cities": [
+          { "cityId": 2011, "name": "Los Angeles" },
+          { "cityId": 2012, "name": "San Francisco" },
+          { "cityId": 2013, "name": "San Diego" },
+          { "cityId": 2014, "name": "Sacramento" },
+          { "cityId": 2015, "name": "San Jose" }
+        ]
+      },
+      {
+        "stateId": 202,
+        "name": "Texas",
+        "cities": [
+          { "cityId": 2021, "name": "Houston" },
+          { "cityId": 2022, "name": "Dallas" },
+          { "cityId": 2023, "name": "Austin" },
+          { "cityId": 2024, "name": "San Antonio" },
+          { "cityId": 2025, "name": "Fort Worth" }
+        ]
+      },
+      {
+        "stateId": 203,
+        "name": "Florida",
+        "cities": [
+          { "cityId": 2031, "name": "Miami" },
+          { "cityId": 2032, "name": "Orlando" },
+          { "cityId": 2033, "name": "Tampa" },
+          { "cityId": 2034, "name": "Jacksonville" },
+          { "cityId": 2035, "name": "Tallahassee" }
+        ]
+      },
+      {
+        "stateId": 204,
+        "name": "New York",
+        "cities": [
+          { "cityId": 2041, "name": "New York City" },
+          { "cityId": 2042, "name": "Buffalo" },
+          { "cityId": 2043, "name": "Rochester" },
+          { "cityId": 2044, "name": "Albany" },
+          { "cityId": 2045, "name": "Syracuse" }
+        ]
+      },
+      {
+        "stateId": 205,
+        "name": "Illinois",
+        "cities": [
+          { "cityId": 2051, "name": "Chicago" },
+          { "cityId": 2052, "name": "Springfield" },
+          { "cityId": 2053, "name": "Naperville" },
+          { "cityId": 2054, "name": "Aurora" },
+          { "cityId": 2055, "name": "Peoria" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "United Kingdom",
+    "states": [
+      {
+        "stateId": 301,
+        "name": "England",
+        "cities": [
+          { "cityId": 3011, "name": "London" },
+          { "cityId": 3012, "name": "Manchester" },
+          { "cityId": 3013, "name": "Birmingham" },
+          { "cityId": 3014, "name": "Liverpool" },
+          { "cityId": 3015, "name": "Leeds" }
+        ]
+      },
+      {
+        "stateId": 302,
+        "name": "Scotland",
+        "cities": [
+          { "cityId": 3021, "name": "Edinburgh" },
+          { "cityId": 3022, "name": "Glasgow" },
+          { "cityId": 3023, "name": "Aberdeen" },
+          { "cityId": 3024, "name": "Dundee" },
+          { "cityId": 3025, "name": "Stirling" }
+        ]
+      },
+      {
+        "stateId": 303,
+        "name": "Wales",
+        "cities": [
+          { "cityId": 3031, "name": "Cardiff" },
+          { "cityId": 3032, "name": "Swansea" },
+          { "cityId": 3033, "name": "Newport" },
+          { "cityId": 3034, "name": "Bangor" },
+          { "cityId": 3035, "name": "Wrexham" }
+        ]
+      },
+      {
+        "stateId": 304,
+        "name": "Northern Ireland",
+        "cities": [
+          { "cityId": 3041, "name": "Belfast" },
+          { "cityId": 3042, "name": "Derry" },
+          { "cityId": 3043, "name": "Lisburn" },
+          { "cityId": 3044, "name": "Newry" },
+          { "cityId": 3045, "name": "Bangor" }
+        ]
+      },
+      {
+        "stateId": 305,
+        "name": "Isle of Man",
+        "cities": [
+          { "cityId": 3051, "name": "Douglas" },
+          { "cityId": 3052, "name": "Ramsey" },
+          { "cityId": 3053, "name": "Peel" },
+          { "cityId": 3054, "name": "Castletown" },
+          { "cityId": 3055, "name": "Onchan" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Canada",
+    "states": [
+      {
+        "stateId": 401,
+        "name": "Ontario",
+        "cities": [
+          { "cityId": 4011, "name": "Toronto" },
+          { "cityId": 4012, "name": "Ottawa" },
+          { "cityId": 4013, "name": "Mississauga" },
+          { "cityId": 4014, "name": "Brampton" },
+          { "cityId": 4015, "name": "London" }
+        ]
+      },
+      {
+        "stateId": 402,
+        "name": "Quebec",
+        "cities": [
+          { "cityId": 4021, "name": "Montreal" },
+          { "cityId": 4022, "name": "Quebec City" },
+          { "cityId": 4023, "name": "Laval" },
+          { "cityId": 4024, "name": "Gatineau" },
+          { "cityId": 4025, "name": "Sherbrooke" }
+        ]
+      },
+      {
+        "stateId": 403,
+        "name": "British Columbia",
+        "cities": [
+          { "cityId": 4031, "name": "Vancouver" },
+          { "cityId": 4032, "name": "Victoria" },
+          { "cityId": 4033, "name": "Surrey" },
+          { "cityId": 4034, "name": "Kelowna" },
+          { "cityId": 4035, "name": "Burnaby" }
+        ]
+      },
+      {
+        "stateId": 404,
+        "name": "Alberta",
+        "cities": [
+          { "cityId": 4041, "name": "Calgary" },
+          { "cityId": 4042, "name": "Edmonton" },
+          { "cityId": 4043, "name": "Red Deer" },
+          { "cityId": 4044, "name": "Lethbridge" },
+          { "cityId": 4045, "name": "St. Albert" }
+        ]
+      },
+      {
+        "stateId": 405,
+        "name": "Manitoba",
+        "cities": [
+          { "cityId": 4051, "name": "Winnipeg" },
+          { "cityId": 4052, "name": "Brandon" },
+          { "cityId": 4053, "name": "Steinbach" },
+          { "cityId": 4054, "name": "Thompson" },
+          { "cityId": 4055, "name": "Portage la Prairie" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Australia",
+    "states": [
+      {
+        "stateId": 501,
+        "name": "New South Wales",
+        "cities": [
+          { "cityId": 5011, "name": "Sydney" },
+          { "cityId": 5012, "name": "Newcastle" },
+          { "cityId": 5013, "name": "Wollongong" },
+          { "cityId": 5014, "name": "Albury" },
+          { "cityId": 5015, "name": "Coffs Harbour" }
+        ]
+      },
+      {
+        "stateId": 502,
+        "name": "Victoria",
+        "cities": [
+          { "cityId": 5021, "name": "Melbourne" },
+          { "cityId": 5022, "name": "Geelong" },
+          { "cityId": 5023, "name": "Ballarat" },
+          { "cityId": 5024, "name": "Bendigo" },
+          { "cityId": 5025, "name": "Shepparton" }
+        ]
+      },
+      {
+        "stateId": 503,
+        "name": "Queensland",
+        "cities": [
+          { "cityId": 5031, "name": "Brisbane" },
+          { "cityId": 5032, "name": "Gold Coast" },
+          { "cityId": 5033, "name": "Cairns" },
+          { "cityId": 5034, "name": "Townsville" },
+          { "cityId": 5035, "name": "Toowoomba" }
+        ]
+      },
+      {
+        "stateId": 504,
+        "name": "Western Australia",
+        "cities": [
+          { "cityId": 5041, "name": "Perth" },
+          { "cityId": 5042, "name": "Fremantle" },
+          { "cityId": 5043, "name": "Bunbury" },
+          { "cityId": 5044, "name": "Albany" },
+          { "cityId": 5045, "name": "Geraldton" }
+        ]
+      },
+      {
+        "stateId": 505,
+        "name": "South Australia",
+        "cities": [
+          { "cityId": 5051, "name": "Adelaide" },
+          { "cityId": 5052, "name": "Mount Gambier" },
+          { "cityId": 5053, "name": "Whyalla" },
+          { "cityId": 5054, "name": "Gawler" },
+          { "cityId": 5055, "name": "Port Lincoln" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Germany",
+    "states": [
+      {
+        "stateId": 601,
+        "name": "Bavaria",
+        "cities": [
+          { "cityId": 6011, "name": "Munich" },
+          { "cityId": 6012, "name": "Nuremberg" },
+          { "cityId": 6013, "name": "Augsburg" },
+          { "cityId": 6014, "name": "Regensburg" },
+          { "cityId": 6015, "name": "Würzburg" }
+        ]
+      },
+      {
+        "stateId": 602,
+        "name": "Baden-Württemberg",
+        "cities": [
+          { "cityId": 6021, "name": "Stuttgart" },
+          { "cityId": 6022, "name": "Mannheim" },
+          { "cityId": 6023, "name": "Karlsruhe" },
+          { "cityId": 6024, "name": "Freiburg" },
+          { "cityId": 6025, "name": "Heidelberg" }
+        ]
+      },
+      {
+        "stateId": 603,
+        "name": "North Rhine-Westphalia",
+        "cities": [
+          { "cityId": 6031, "name": "Cologne" },
+          { "cityId": 6032, "name": "Düsseldorf" },
+          { "cityId": 6033, "name": "Dortmund" },
+          { "cityId": 6034, "name": "Essen" },
+          { "cityId": 6035, "name": "Bonn" }
+        ]
+      },
+      {
+        "stateId": 604,
+        "name": "Hesse",
+        "cities": [
+          { "cityId": 6041, "name": "Frankfurt" },
+          { "cityId": 6042, "name": "Wiesbaden" },
+          { "cityId": 6043, "name": "Darmstadt" },
+          { "cityId": 6044, "name": "Kassel" },
+          { "cityId": 6045, "name": "Offenbach" }
+        ]
+      },
+      {
+        "stateId": 605,
+        "name": "Berlin",
+        "cities": [{ "cityId": 6051, "name": "Berlin" }]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "France",
+    "states": [
+      {
+        "stateId": 701,
+        "name": "Île-de-France",
+        "cities": [
+          { "cityId": 7011, "name": "Paris" },
+          { "cityId": 7012, "name": "Versailles" },
+          { "cityId": 7013, "name": "Boulogne-Billancourt" },
+          { "cityId": 7014, "name": "Nanterre" },
+          { "cityId": 7015, "name": "Créteil" }
+        ]
+      },
+      {
+        "stateId": 702,
+        "name": "Provence-Alpes-Côte d'Azur",
+        "cities": [
+          { "cityId": 7021, "name": "Marseille" },
+          { "cityId": 7022, "name": "Nice" },
+          { "cityId": 7023, "name": "Toulon" },
+          { "cityId": 7024, "name": "Avignon" },
+          { "cityId": 7025, "name": "Cannes" }
+        ]
+      },
+      {
+        "stateId": 703,
+        "name": "Auvergne-Rhône-Alpes",
+        "cities": [
+          { "cityId": 7031, "name": "Lyon" },
+          { "cityId": 7032, "name": "Grenoble" },
+          { "cityId": 7033, "name": "Saint-Étienne" },
+          { "cityId": 7034, "name": "Clermont-Ferrand" },
+          { "cityId": 7035, "name": "Annecy" }
+        ]
+      },
+      {
+        "stateId": 704,
+        "name": "Occitanie",
+        "cities": [
+          { "cityId": 7041, "name": "Toulouse" },
+          { "cityId": 7042, "name": "Montpellier" },
+          { "cityId": 7043, "name": "Nîmes" },
+          { "cityId": 7044, "name": "Perpignan" },
+          { "cityId": 7045, "name": "Béziers" }
+        ]
+      },
+      {
+        "stateId": 705,
+        "name": "Nouvelle-Aquitaine",
+        "cities": [
+          { "cityId": 7051, "name": "Bordeaux" },
+          { "cityId": 7052, "name": "Limoges" },
+          { "cityId": 7053, "name": "Poitiers" },
+          { "cityId": 7054, "name": "Pau" },
+          { "cityId": 7055, "name": "La Rochelle" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Brazil",
+    "states": [
+      {
+        "stateId": 801,
+        "name": "São Paulo",
+        "cities": [
+          { "cityId": 8011, "name": "São Paulo" },
+          { "cityId": 8012, "name": "Campinas" },
+          { "cityId": 8013, "name": "Santos" },
+          { "cityId": 8014, "name": "Sorocaba" },
+          { "cityId": 8015, "name": "Ribeirão Preto" }
+        ]
+      },
+      {
+        "stateId": 802,
+        "name": "Rio de Janeiro",
+        "cities": [
+          { "cityId": 8021, "name": "Rio de Janeiro" },
+          { "cityId": 8022, "name": "Niterói" },
+          { "cityId": 8023, "name": "Petrópolis" },
+          { "cityId": 8024, "name": "Duque de Caxias" },
+          { "cityId": 8025, "name": "Nova Iguaçu" }
+        ]
+      },
+      {
+        "stateId": 803,
+        "name": "Bahia",
+        "cities": [
+          { "cityId": 8031, "name": "Salvador" },
+          { "cityId": 8032, "name": "Feira de Santana" },
+          { "cityId": 8033, "name": "Vitória da Conquista" },
+          { "cityId": 8034, "name": "Camaçari" },
+          { "cityId": 8035, "name": "Itabuna" }
+        ]
+      },
+      {
+        "stateId": 804,
+        "name": "Minas Gerais",
+        "cities": [
+          { "cityId": 8041, "name": "Belo Horizonte" },
+          { "cityId": 8042, "name": "Uberlândia" },
+          { "cityId": 8043, "name": "Contagem" },
+          { "cityId": 8044, "name": "Juiz de Fora" },
+          { "cityId": 8045, "name": "Betim" }
+        ]
+      },
+      {
+        "stateId": 805,
+        "name": "Rio Grande do Sul",
+        "cities": [
+          { "cityId": 8051, "name": "Porto Alegre" },
+          { "cityId": 8052, "name": "Caxias do Sul" },
+          { "cityId": 8053, "name": "Pelotas" },
+          { "cityId": 8054, "name": "Santa Maria" },
+          { "cityId": 8055, "name": "Canoas" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Japan",
+    "states": [
+      {
+        "stateId": 901,
+        "name": "Hokkaido",
+        "cities": [
+          { "cityId": 9011, "name": "Sapporo" },
+          { "cityId": 9012, "name": "Hakodate" },
+          { "cityId": 9013, "name": "Asahikawa" },
+          { "cityId": 9014, "name": "Obihiro" },
+          { "cityId": 9015, "name": "Kushiro" }
+        ]
+      },
+      {
+        "stateId": 902,
+        "name": "Kanto",
+        "cities": [
+          { "cityId": 9021, "name": "Tokyo" },
+          { "cityId": 9022, "name": "Yokohama" },
+          { "cityId": 9023, "name": "Kawasaki" },
+          { "cityId": 9024, "name": "Saitama" },
+          { "cityId": 9025, "name": "Chiba" }
+        ]
+      },
+      {
+        "stateId": 903,
+        "name": "Chubu",
+        "cities": [
+          { "cityId": 9031, "name": "Nagoya" },
+          { "cityId": 9032, "name": "Kanazawa" },
+          { "cityId": 9033, "name": "Niigata" },
+          { "cityId": 9034, "name": "Toyama" },
+          { "cityId": 9035, "name": "Gifu" }
+        ]
+      },
+      {
+        "stateId": 904,
+        "name": "Kinki",
+        "cities": [
+          { "cityId": 9041, "name": "Osaka" },
+          { "cityId": 9042, "name": "Kyoto" },
+          { "cityId": 9043, "name": "Kobe" },
+          { "cityId": 9044, "name": "Nara" },
+          { "cityId": 9045, "name": "Sakai" }
+        ]
+      },
+      {
+        "stateId": 905,
+        "name": "Kyushu",
+        "cities": [
+          { "cityId": 9051, "name": "Fukuoka" },
+          { "cityId": 9052, "name": "Kumamoto" },
+          { "cityId": 9053, "name": "Nagasaki" },
+          { "cityId": 9054, "name": "Kagoshima" },
+          { "cityId": 9055, "name": "Oita" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "South Africa",
+    "states": [
+      {
+        "stateId": 1001,
+        "name": "Gauteng",
+        "cities": [
+          { "cityId": 10011, "name": "Johannesburg" },
+          { "cityId": 10012, "name": "Pretoria" },
+          { "cityId": 10013, "name": "Soweto" },
+          { "cityId": 10014, "name": "Midrand" },
+          { "cityId": 10015, "name": "Vereeniging" }
+        ]
+      },
+      {
+        "stateId": 1002,
+        "name": "Western Cape",
+        "cities": [
+          { "cityId": 10021, "name": "Cape Town" },
+          { "cityId": 10022, "name": "Stellenbosch" },
+          { "cityId": 10023, "name": "Paarl" },
+          { "cityId": 10024, "name": "George" },
+          { "cityId": 10025, "name": "Worcester" }
+        ]
+      },
+      {
+        "stateId": 1003,
+        "name": "KwaZulu-Natal",
+        "cities": [
+          { "cityId": 10031, "name": "Durban" },
+          { "cityId": 10032, "name": "Pietermaritzburg" },
+          { "cityId": 10033, "name": "Richards Bay" },
+          { "cityId": 10034, "name": "Newcastle" },
+          { "cityId": 10035, "name": "Empangeni" }
+        ]
+      },
+      {
+        "stateId": 1004,
+        "name": "Eastern Cape",
+        "cities": [
+          { "cityId": 10041, "name": "Port Elizabeth" },
+          { "cityId": 10042, "name": "East London" },
+          { "cityId": 10043, "name": "Mthatha" },
+          { "cityId": 10044, "name": "Grahamstown" },
+          { "cityId": 10045, "name": "King William's Town" }
+        ]
+      },
+      {
+        "stateId": 1005,
+        "name": "Free State",
+        "cities": [
+          { "cityId": 10051, "name": "Bloemfontein" },
+          { "cityId": 10052, "name": "Welkom" },
+          { "cityId": 10053, "name": "Bethlehem" },
+          { "cityId": 10054, "name": "Kroonstad" },
+          { "cityId": 10055, "name": "Harrismith" }
+        ]
+      }
+    ]
+  }
+]

@@ -9,10 +9,12 @@ import {
   addEmployee,
   getEmployee,
   updateEmployeeData,
+  getAreaData,
 } from "../services/services";
 import "./employee_form.css";
 
 const EmployeeForm = (data) => {
+  console.log(data);
   // const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const [states, setStates] = useState([]);
@@ -41,8 +43,9 @@ const EmployeeForm = (data) => {
     const fetchData = async () => {
       try {
         // fetch countries
-        const countriesData = await getCountries();
-        setCountries(countriesData);
+        const areaData = await getAreaData();
+        setCountries(areaData);
+        localStorage.setItem("area_data", JSON.stringify(areaData));
       } catch (error) {
         console.error("Error fetching countries data:", error);
       }
@@ -160,25 +163,23 @@ const EmployeeForm = (data) => {
 
   const handleCountryChange = async (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
+    const selectedCountry = countries.find((country) => country.id == value);
     setFormData({
       ...formData,
       [name]: value,
     });
-    //fetch states
-    const statesData = await getStates(value);
-    setStates(statesData);
+    setStates(selectedCountry?.states);
   };
 
   const handleStateChange = async (e) => {
     const { name, value } = e.target;
+    const selectedState = states.find((state) => state.stateId == value);
     setFormData({
       ...formData,
       [name]: value,
     });
-
-    // fetch cities
-    const citiesData = await getCities(value);
-    setCities(citiesData);
+    setCities(selectedState?.cities);
   };
 
   const handleSubmit = async (e) => {
@@ -247,8 +248,6 @@ const EmployeeForm = (data) => {
           isFormValid = false;
         }
       }
-      console.log(formData);
-      console.log(invalidFields);
       if (isFormValid) {
         await addEmployee(formData);
         console.log("Form submitted successfully!");
@@ -524,8 +523,8 @@ const EmployeeForm = (data) => {
             >
               <option value="">Select Country</option>
               {countries.map((country) => (
-                <option key={country.row_Id} value={country.row_Id}>
-                  {country.countryName}
+                <option key={country.id} value={country.id}>
+                  {country.name}
                 </option>
               ))}
             </Form.Select>
@@ -545,8 +544,8 @@ const EmployeeForm = (data) => {
             >
               <option value="">Select State</option>
               {states.map((state) => (
-                <option key={state.row_Id} value={state.row_Id}>
-                  {state.stateName}
+                <option key={state.stateId} value={state.stateId}>
+                  {state.name}
                 </option>
               ))}
             </Form.Select>
@@ -566,8 +565,8 @@ const EmployeeForm = (data) => {
             >
               <option value="">Select City</option>
               {cities.map((city) => (
-                <option key={city.row_Id} value={city.row_Id}>
-                  {city.cityName}
+                <option key={city.cityId} value={city.cityId}>
+                  {city.name}
                 </option>
               ))}
             </Form.Select>

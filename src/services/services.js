@@ -1,11 +1,21 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:5297/api";
+// const apiUrl = "http://localhost:5297/api";
+const apiUrl = "./data";
 
 // fetch the list of employees
 export const getEmployeeData = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/Employee/GetAllEmployeesList`);
+    const response = await axios.get("./data/emp_data.json");
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getAreaData = async () => {
+  try {
+    const response = await axios.get("./data/area_data.json");
     return response.data;
   } catch (error) {
     throw error;
@@ -27,7 +37,8 @@ export const deleteEmployee = async (employeeId) => {
 // get the list of countries
 export const getCountries = async () => {
   try {
-    const response = await axios.get(`${apiUrl}/Employee/GetAllCountryList/`);
+    // const response = await axios.get(`${apiUrl}/Employee/GetAllCountryList/`);
+    const response = await axios.get(`${apiUrl}/countries.json`);
     return response.data;
   } catch (error) {
     throw error;
@@ -37,9 +48,10 @@ export const getCountries = async () => {
 // get the list of states
 export const getStates = async (countryId) => {
   try {
-    const response = await axios.get(
-      `${apiUrl}/Employee/GetStateListById/${countryId}`
-    );
+    // const response = await axios.get(
+    //   `${apiUrl}/Employee/GetStateListById/${countryId}`
+    // );
+    const response = await axios.get(`${apiUrl}/states.json`);
     return response.data;
   } catch (error) {
     throw error;
