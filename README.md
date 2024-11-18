@@ -19,10 +19,13 @@ The Employee Management System is a React-based web application designed to mana
 	• API Integration: Axios / Fetch API (choose one)
 
 ## Website images
+### employee sign-up form
 <img width="1512" alt="dt_emp_app_01" src="https://github.com/user-attachments/assets/525cfd4b-f37c-4125-874a-8368d6b50ceb">
 
+### employee list
 <img width="1512" alt="dt_emp_app_02" src="https://github.com/user-attachments/assets/25aa0e9c-14d1-42e0-9b1f-47a88a8dff67">
 
+### header and search-bar
 <img width="1512" alt="dt_emp_app_03" src="https://github.com/user-attachments/assets/62e2dcea-6ad4-4a8e-8d8d-e48c21639e6e">
 
 
